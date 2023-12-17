@@ -1,37 +1,65 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import MyContext from '../components/MyContext';
+import Swal from 'sweetalert2';
+
 import "./AddNote.css";
 import "../components/IconStyle.css";
-const AddNote=()=>{
-    const navigate=useNavigate();
-    const [titleValue,setTitleValue]=useState(null);
-    const [descriptionValue,setDescriptionValue]=useState(null);
-    const handleChange=(event)=>{
-        const tempValue=event.target.value;
-        if(event.target.name==="title")
-        setTitleValue(tempValue);
-        else
-        setDescriptionValue(tempValue);
+const AddNote = () => {
+    const navigate = useNavigate();
+    const { notes, setNotes } = useContext(MyContext);
+    const date = new Date();
+    const options = { month: 'short', day: '2-digit', year: 'numeric' };
+    const currentDate = date.toLocaleDateString('en-US', options).toString();
+    console.log(currentDate);
+    const [notesValue, setTitleValue] = useState(
+        {
+            id: null,
+            title: "",
+            date: null,
+            description: ""
+        }
+    );
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setTitleValue({ ...notesValue, [name]: value, date: currentDate });
     }
 
-    const handleClick=(event)=>{
-        if (event.target.name==="saveButton"){
-        console.log(event.target.name);
-            
+    const handleClick = (event) => {
+
+        if (event.target.name === "saveButton" ) { 
+            if((notesValue.description==="")){
+                Swal.fire({
+                    text:"Please fill up your notes",
+                    position:"center",
+                    width:"15rem",
+                    timer:1000,
+                    showConfirmButton:false,
+                  }
+                  );
+            }
+            else{
+                setNotes([...notes, notesValue]);
+                navigate("/notes");
+            }
         }
-        navigate("/notes");
+        else {
+            navigate("/notes");
+        }
+        
     }
-    return(
+    return (
         <div className='addNote'>
             <div className='addNoteHeader'>
-            <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle'/>
-            <button onClick={handleClick} name='saveButton'>Save</button>
+                <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />
+                <button onClick={handleClick} name='saveButton'>Save</button>
             </div>
             <div className='addNoteMain'>
-                <input onChange={handleChange} value={titleValue} name='title' placeholder='Title'/>
-                <textarea onChange={handleChange} value={descriptionValue} name='description' placeholder="Type something..."/>
+                <input onChange={handleChange} value={notesValue.title} name='title' placeholder='Title' />
+                <textarea onChange={handleChange} value={notesValue.description} name='description' placeholder="Type something..." />
             </div>
         </div>
     )

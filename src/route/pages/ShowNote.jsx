@@ -30,13 +30,12 @@ const ShowNote=()=>{
         <div className="showNote">
              <div className='showNoteHeader'>
             <FontAwesomeIcon onClick={handleClick} icon={faAngleLeft} data-name='backButton' className="iconStyle" /> 
-            {/* <button  >Save</button> */}
             <FontAwesomeIcon onClick={handleClick} icon={faPenToSquare} data-name='editButton' className="iconStyle" /> 
             </div>
            <div className="showNoteMain">
             <h1>{title}</h1>
-            <h1>{date}</h1>
-            <h1>{description}</h1>
+            <h2>{date}</h2>
+            <h3>{description}</h3>
             </div>
         </div>
     )
