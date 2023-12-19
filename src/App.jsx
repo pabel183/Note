@@ -9,7 +9,7 @@ import ShowNote from "./route/pages/ShowNote";
 
 import "./App.css"
 const App=()=>{
-    const [notes,setNotes]=useState(defaultNotes);
+    const [notes,setNotes]=useState([]);
     const [holdId,setHoldId]=useState([]);
     const [ isHeld, setHeld ] = useState(false);
     return(

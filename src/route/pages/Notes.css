@@ -45,17 +45,13 @@
     bottom: 2rem;
     right: 2rem;
 }
-.iconStyle {
-    color: #ffffff;
-    font-size:3rem;
-    background-color: #3B3B3B;
-    width: 1.5rem;
-    padding: 0 .8rem;
-    border-radius: .6rem;
-}
+
 @media (max-width:450px) {
     .notesContainer{
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 1rem;
     }
+    .notesContainer > :nth-child(3n+3) {
+        grid-column: 1 / span 2 ;
+      }
 }

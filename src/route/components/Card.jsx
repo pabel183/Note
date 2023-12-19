@@ -63,7 +63,7 @@ const Card = (props) => {
          onTouchEnd={handleMouseUp}
          >
             <h3>
-                {props.id}
+                {props.title}
             </h3>
             <h5>{props.date}</h5>
             {holdId.map((item)=>{

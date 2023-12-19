@@ -6,3 +6,20 @@
   font-family: 'Poppins', sans-serif;
   --backgroundColor: none;
 }
+html,body,#root{
+  background-color: #252525;
+  color: white;
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  --backgroundColor: none;
+}
+@media (prefers-color-scheme: dark) {
+  html,body,#root{
+    background-color: rgb(176, 170, 106);
+    color: white;
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+  } 
+}
