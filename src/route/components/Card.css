@@ -4,10 +4,14 @@
     /* flex-wrap: wrap; */
     padding: .5rem;
     border-radius: .5rem;
-    background-color: green;
+    color: black;
+    background-color: var(--backgroundColor);
     justify-content: center;
     align-items: flex-start;
     gap: .5rem;
+}
+.deleteEnv{
+    filter: drop-shadow(0 0 2px gray);
 }
 .card p,h2{
     margin: 0;

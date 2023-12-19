@@ -6,7 +6,11 @@ import "./Card.css";
 const Card = (props) => {
     const navigate = useNavigate();
     const cardColor = ["Lavender", "PowderBlue", "LightPink", "MistyRose", "PeachPuff", "LemonChiffon", "PaleTurquoise", "Honeydew", "LavenderBlush", "AliceBlue"];
-    
+    const colorIndex=Math.floor(Math.random()*10);
+    const style={
+        '--backgroundColor':cardColor[colorIndex],
+    }
+
     const { holdId, setHoldId,isHeld, setHeld } = useContext(MyContext);
     let timer = null;
     const handleMouseDown = () => {
@@ -46,7 +50,7 @@ const Card = (props) => {
         }
     }
     return (
-        <div onClick={handleClick} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} className="card">
+        <div className={"card " + (isHeld?"deleteEnv":"" )  } style={style} onClick={handleClick} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} >
             <h3>
                 {props.id}
             </h3>
@@ -59,7 +63,7 @@ const Card = (props) => {
                     return "";
                 }
             })}
-            {isHeld?<h1>held</h1>:""}
+            
         </div>
     );
 }
