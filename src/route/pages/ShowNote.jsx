@@ -9,7 +9,7 @@ import "./ShowNote.css";
 const ShowNote=()=>{
     const location=useLocation();
     const navigate=useNavigate();
-    const {title,description,date}=location.state?.data;
+    const {id,title,description,date}=location.state?.data;
     const handleClick=(event)=>{
         if (event.currentTarget.dataset.name==="editButton"){
         console.log(event.currentTarget.dataset.name);

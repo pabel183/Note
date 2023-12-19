@@ -10,8 +10,10 @@ import ShowNote from "./route/pages/ShowNote";
 import "./App.css"
 const App=()=>{
     const [notes,setNotes]=useState(defaultNotes);
+    const [holdId,setHoldId]=useState([]);
+    const [ isHeld, setHeld ] = useState(false);
     return(
-        <MyContext.Provider value={ {notes:notes,setNotes:setNotes} }>
+        <MyContext.Provider value={ {notes:notes,setNotes:setNotes,holdId,setHoldId,isHeld, setHeld} }>
         <Router>
             <Routes>
                 {/* Home page is repalced by Notes */}

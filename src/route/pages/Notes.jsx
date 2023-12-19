@@ -35,7 +35,7 @@ const Notes = () => {
                 {
                     notes.map((value)=>{
                         return(
-                            <Card key={value.id} title={value.title} description={value.description} date={value.date} />
+                            <Card key={value.id} id={value.id} title={value.title} description={value.description} date={value.date} />
                         )
                     })
                 }
