@@ -2,6 +2,8 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { v4 as uuidv4 } from 'uuid';
+
 import MyContext from '../components/MyContext';
 import Swal from 'sweetalert2';
 
@@ -24,8 +26,9 @@ const AddNote = () => {
     );
 
     const handleChange = (event) => {
+        const id=uuidv4();
         const { name, value } = event.target;
-        setTitleValue({ ...notesValue, [name]: value, date: currentDate });
+        setTitleValue({ ...notesValue,id:id, [name]: value, date: currentDate });
     }
 
     const handleClick = (event) => {

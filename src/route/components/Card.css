@@ -11,9 +11,16 @@
     gap: .5rem;
 }
 .deleteEnv{
-    filter: drop-shadow(0 0 2px gray);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.732));
 }
 .card p,h2{
     margin: 0;
     display: inline-block;
+}
+.crossIcon{
+        color: #1a2332;
+        font-size:2rem;
+        width: 1.5rem;
+        display: flex;
+        align-self: self-end;
 }

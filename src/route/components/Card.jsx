@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import MyContext from "./MyContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+
 import "./Card.css";
 
 const Card = (props) => {
@@ -55,7 +58,7 @@ const Card = (props) => {
         style={style} onClick={handleClick}
          onMouseDown={handleMouseDown} 
          onMouseUp={handleMouseUp}
-         
+
          onTouchStart={handleMouseDown}
          onTouchEnd={handleMouseUp}
          >
@@ -65,7 +68,9 @@ const Card = (props) => {
             <h5>{props.date}</h5>
             {holdId.map((item)=>{
                 if(item.id===props.id){
-                    return(<h1>delete Icon</h1>);
+                    return(
+                        <FontAwesomeIcon icon={faCircleXmark} className="crossIcon" />
+                    );
                 }
                 else{
                     return "";

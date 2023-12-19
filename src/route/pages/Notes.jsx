@@ -1,7 +1,7 @@
 import React,{useContext} from "react";
 import Card from "../components/Card";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlus,faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus,faMagnifyingGlass,faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import MyContext from "../components/MyContext";
@@ -11,7 +11,14 @@ import "../components/IconStyle.css";
 
 const Notes = () => {
     const navigate=useNavigate();
-    const {notes,setNotes}=useContext(MyContext);
+    const {notes,setNotes,isHeld,setHoldId,setHeld,holdId}=useContext(MyContext);
+    
+    const deleteNotes=()=>{
+        const updateNotes=notes.filter((item)=>!holdId.some((holdItem)=>holdItem.id===item.id));
+        setNotes(updateNotes);
+        setHoldId([]);
+        setHeld(false);
+    }
 
     const handleClick=()=>{
       Swal.fire({
@@ -41,7 +48,12 @@ const Notes = () => {
                 }
             </div>
             <div className="addIcon">
-            <FontAwesomeIcon onClick={()=>navigate("/addNote")} icon={faCirclePlus} style={{color: "#0a0a0a",fontSize:"5rem"}} />
+            {
+                isHeld?
+                <FontAwesomeIcon onClick={deleteNotes} icon={faTrashCan} style={{color: "#c92115",fontSize:"3rem"}}/>
+                :
+                <FontAwesomeIcon onClick={()=>navigate("/addNote")} icon={faCirclePlus} style={{color: "#0a0a0a",fontSize:"5rem"}} />
+            }
             </div>
         </div>
     )
