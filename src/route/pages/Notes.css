@@ -10,7 +10,6 @@
     left:0;
     right: 0;
     padding: .5rem 1rem;
-    /* width: 100%; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -36,6 +35,22 @@
     grid-template-rows: auto;
     gap: 1rem;
 }
+.controlledContainer{
+    position: absolute;
+left: 0;
+right: 0;
+top: 5rem;
+bottom: 0;
+padding: 0 1rem 1rem;
+overflow-y: scroll;
+scrollbar-width: none;
+-ms-overflow-style: none;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr;
+/* grid-template-rows: auto; */
+gap: 1rem;
+}
 .notesContainer::-webkit-scrollbar {
     width: 0px;
     background: transparent;
@@ -48,10 +63,15 @@
 
 @media (max-width:450px) {
     .notesContainer{
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 1rem;
     }
-    .notesContainer > :nth-child(3n+3) {
+    .controlledContainer{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    
+    }
+    /* .notesContainer > :nth-child(3n+3) {
         grid-column: 1 / span 2 ;
-      }
+      } */
 }

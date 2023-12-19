@@ -38,7 +38,7 @@ const Notes = () => {
                 <h1>Notes</h1>
                  <FontAwesomeIcon onClick={handleClick} icon={faMagnifyingGlass} className="iconStyle" /> 
             </div>
-            <div className="notesContainer">
+            <div className={notes.length<6?"controlledContainer":"notesContainer"} >
                 {
                     notes.map((value)=>{
                         return(
