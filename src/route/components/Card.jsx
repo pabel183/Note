@@ -50,7 +50,15 @@ const Card = (props) => {
         }
     }
     return (
-        <div className={"card " + (isHeld?"deleteEnv":"" )  } style={style} onClick={handleClick} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} >
+        <div 
+        className={"card " + (isHeld?"deleteEnv":"" )  } 
+        style={style} onClick={handleClick}
+         onMouseDown={handleMouseDown} 
+         onMouseUp={handleMouseUp}
+         
+         onTouchStart={handleMouseDown}
+         onTouchEnd={handleMouseUp}
+         >
             <h3>
                 {props.id}
             </h3>
