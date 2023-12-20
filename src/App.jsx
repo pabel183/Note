@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
+import Cookies from 'js-cookie';
 import Notes from "./route/pages/Notes";
 import Home from "./route/pages/Home";
 import AddNote from "./route/pages/AddNote";
@@ -12,6 +13,20 @@ const App=()=>{
     const [notes,setNotes]=useState([]);
     const [holdId,setHoldId]=useState([]);
     const [ isHeld, setHeld ] = useState(false);
+
+    useEffect(()=>{
+        const data=Cookies.get("data");
+        if(data){
+            //it is mandatory to parse data before store in useState;
+            const parseData=JSON.parse(data)
+            setNotes(parseData);
+        }
+    },[])
+    useEffect(()=>{
+        //it is mandatory to stringify data before store in useState;
+        const stringData=JSON.stringify(notes) ;
+        Cookies.set("data",stringData);
+    },[notes]);
     return(
         <MyContext.Provider value={ {notes:notes,setNotes:setNotes,holdId,setHoldId,isHeld, setHeld} }>
         <Router>
