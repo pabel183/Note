@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import Cookies from 'js-cookie';
+import GoogleLogin from '@react-oauth/google';
+import { GoogleLogout } from '@react-oauth/google';
 import Notes from "./route/pages/Notes";
 import Home from "./route/pages/Home";
 import AddNote from "./route/pages/AddNote";
@@ -27,12 +29,12 @@ const App=()=>{
         const stringData=JSON.stringify(notes) ;
         Cookies.set("data",stringData);
     },[notes]);
+    
     return(
         <MyContext.Provider value={ {notes:notes,setNotes:setNotes,holdId,setHoldId,isHeld, setHeld} }>
         <Router>
             <Routes>
-                {/* Home page is repalced by Notes */}
-                <Route path="/" element={<Notes />}/>
+                <Route path="/" element={<Home />}/>
                 <Route path="/notes"  element={<Notes />}/>
                 <Route path="/addNote" element={<AddNote />}/>
                 <Route path="/showNote" element={<ShowNote />}/>
