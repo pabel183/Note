@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import Cookies from 'js-cookie';
-import GoogleLogin from '@react-oauth/google';
-import { GoogleLogout } from '@react-oauth/google';
 import Notes from "./route/pages/Notes";
 import Home from "./route/pages/Home";
 import AddNote from "./route/pages/AddNote";
 import MyContext from "./route/components/MyContext";
-import defaultNotes from "../src/route/pages/DummyNotes";
 import ShowNote from "./route/pages/ShowNote";
 
 import "./App.css"
@@ -15,30 +12,71 @@ const App=()=>{
     const [notes,setNotes]=useState([]);
     const [holdId,setHoldId]=useState([]);
     const [ isHeld, setHeld ] = useState(false);
+    const [authData,setAuthData]=useState(null);
+    const searchParams = new URLSearchParams(window.location.search);
+    let tokenParam=null;
+    if(searchParams.size>0){
+        tokenParam = searchParams.get('token');
+    }
+    useEffect(()=>{
+        if(tokenParam===null){
+            const oldAuthData = Cookies.get("data_validation");
+            // console.log(oldAuthData);
+            if(oldAuthData===null){
+                setAuthData(null);
+            }
+            else{
+                setAuthData(oldAuthData);
+            }
+        }
+        else{
+            setAuthData(tokenParam);
+            Cookies.set("data_validation",tokenParam);
+
+        }
+    },[tokenParam]);
 
     useEffect(()=>{
-        const data=Cookies.get("data");
-        if(data){
-            //it is mandatory to parse data before store in useState;
-            const parseData=JSON.parse(data)
-            setNotes(parseData);
+        const oldAuthData = Cookies.get("data_validation");
+        if(oldAuthData===null){
+            setAuthData(null);
         }
-    },[])
+        else{
+            setAuthData(oldAuthData);
+        }
+    });
+
+    useEffect(()=>{
+        const notesData=Cookies.get(authData);
+        if(notesData){
+            //it is mandatory to parse data before store in useState;
+            const parseNotesData=JSON.parse(notesData)
+            setNotes(parseNotesData);
+        }
+    },[authData]);
+
     useEffect(()=>{
         //it is mandatory to stringify data before store in useState;
         const stringData=JSON.stringify(notes) ;
-        Cookies.set("data",stringData);
+        Cookies.set(authData,stringData);
     },[notes]);
     
     return(
         <MyContext.Provider value={ {notes:notes,setNotes:setNotes,holdId,setHoldId,isHeld, setHeld} }>
         <Router>
             <Routes>
-                <Route path="/" element={<Home />}/>
-                <Route path="/notes"  element={<Notes />}/>
-                <Route path="/addNote" element={<AddNote />}/>
-                <Route path="/showNote" element={<ShowNote />}/>
-            </Routes>
+                {
+                    authData?
+                    <>
+                    <Route path="/" element={<Home authData={authData}/>}/>
+                    <Route path="/notes"  element={<Notes />}/>
+                    <Route path="/addNote" element={<AddNote />}/>
+                    <Route path="/showNote" element={<ShowNote />}/>
+                    </>
+                    :
+                    <Route path="/*" element={<Home authData={authData}/>}/>
+                }
+             </Routes>
         </Router>
         </MyContext.Provider>
     )

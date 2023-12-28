@@ -9,7 +9,7 @@ import MyContext from "../components/MyContext";
 import "./Notes.css";
 import "../components/IconStyle.css";
 
-const Notes = () => {
+const Notes = (props) => {
     const navigate=useNavigate();
     const {notes,setNotes,isHeld,setHoldId,setHeld,holdId}=useContext(MyContext);
     
@@ -60,3 +60,39 @@ const Notes = () => {
 }
 
 export default Notes;
+
+// return (
+//     <div>
+//     {props.authData?<div className="notes">
+//         <div className="notesHeader">
+//             <h1>Notes</h1>
+//              <FontAwesomeIcon onClick={handleClick} icon={faMagnifyingGlass} className="iconStyle" /> 
+//         </div>
+//         <div className={notes.length<6?"controlledContainer":"notesContainer"} >
+//             {
+//                 notes.map((value)=>{
+//                     return(
+//                         <Card key={value.id} id={value.id} title={value.title} description={value.description} date={value.date} />
+//                     )
+//                 })
+//             }
+//         </div>
+//         <div className="addIcon">
+//         {
+//             isHeld?
+//             <FontAwesomeIcon onClick={deleteNotes} icon={faTrashCan} style={{color: "#c92115",fontSize:"3rem"}}/>
+//             :
+//             <FontAwesomeIcon onClick={()=>navigate("/addNote")} icon={faCirclePlus} style={{color: "#0a0a0a",fontSize:"5rem"}} />
+//         }
+//         </div>
+//     </div>
+//     :
+//     <div>
+//     <form action="http://localhost:4000/auth/google" method="Get">
+//     <h1>{props.authData}</h1>
+//     <button>google signin</button>
+// </form>
+// </div>
+// }
+// </div>
+// )
