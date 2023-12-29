@@ -6,6 +6,7 @@ import Home from "./route/pages/Home";
 import AddNote from "./route/pages/AddNote";
 import MyContext from "./route/components/MyContext";
 import ShowNote from "./route/pages/ShowNote";
+import {fetchData} from "./Api";
 
 import "./App.css"
 const App=()=>{
@@ -45,17 +46,24 @@ const App=()=>{
             setAuthData(oldAuthData);
         }
     });
-
     useEffect(()=>{
-        const notesData=Cookies.get(authData);
-        if(notesData){
-            //it is mandatory to parse data before store in useState;
-            const parseNotesData=JSON.parse(notesData)
-            setNotes(parseNotesData);
+        //Axio get
+        const fetch=async()=>{
+            const oldAuthData = Cookies.get("data_validation");
+            const newNotesData=await fetchData(oldAuthData);
+            setNotes(newNotesData);
         }
+        fetch();
+        // const notesData=Cookies.get(authData);
+        // if(notesData){
+        //     //it is mandatory to parse data before store in useState;
+        //     const parseNotesData=JSON.parse(notesData)
+        //     setNotes(parseNotesData);
+        // }
     },[authData]);
 
     useEffect(()=>{
+        //Axio Post
         //it is mandatory to stringify data before store in useState;
         const stringData=JSON.stringify(notes) ;
         Cookies.set(authData,stringData);
@@ -68,7 +76,7 @@ const App=()=>{
                 {
                     authData?
                     <>
-                    <Route path="/" element={<Home authData={authData}/>}/>
+                    <Route path="/*" element={<Home authData={authData}/>}/>
                     <Route path="/notes"  element={<Notes />}/>
                     <Route path="/addNote" element={<AddNote />}/>
                     <Route path="/showNote" element={<ShowNote />}/>

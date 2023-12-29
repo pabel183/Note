@@ -3,19 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
-
+import Cookies from 'js-cookie';
 import MyContext from '../components/MyContext';
 import Swal from 'sweetalert2';
 
 import "./AddNote.css";
 import "../components/IconStyle.css";
+
+import {addData} from "../../Api";
+
 const AddNote = () => {
     const navigate = useNavigate();
     const { notes, setNotes } = useContext(MyContext);
     const date = new Date();
     const options = { month: 'short', day: '2-digit', year: 'numeric' };
     const currentDate = date.toLocaleDateString('en-US', options).toString();
-    console.log(currentDate);
     const [notesValue, setTitleValue] = useState(
         {
             id: null,
@@ -46,6 +48,8 @@ const AddNote = () => {
             }
             else{
                 setNotes([...notes, notesValue]);
+                const oldAuthData = Cookies.get("data_validation");
+                addData({data:notesValue,selector:oldAuthData});
                 navigate("/notes");
             }
         }
