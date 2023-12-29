@@ -48,8 +48,8 @@ const AddNote = () => {
             }
             else{
                 setNotes([...notes, notesValue]);
-                const oldAuthData = Cookies.get("data_validation");
-                addData({data:notesValue,selector:oldAuthData});
+                 const oldAuthData = Cookies.get("data_validation");
+                 addData({data:notesValue,selector:oldAuthData});
                 navigate("/notes");
             }
         }

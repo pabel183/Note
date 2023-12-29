@@ -46,20 +46,20 @@ const App=()=>{
             setAuthData(oldAuthData);
         }
     });
-    useEffect(()=>{
+useEffect(()=>{
         //Axio get
-        const fetch=async()=>{
-            const oldAuthData = Cookies.get("data_validation");
-            const newNotesData=await fetchData(oldAuthData);
-            setNotes(newNotesData);
-        }
-        fetch();
-        // const notesData=Cookies.get(authData);
-        // if(notesData){
-        //     //it is mandatory to parse data before store in useState;
-        //     const parseNotesData=JSON.parse(notesData)
-        //     setNotes(parseNotesData);
+        // const fetch=async()=>{
+        //     const oldAuthData = Cookies.get("data_validation");
+        //     const newNotesData=await fetchData(oldAuthData);
+        //     setNotes(newNotesData);
         // }
+        // fetch();
+        const notesData=Cookies.get(authData);
+        if(notesData){
+                //it is mandatory to parse data before store in useState;
+                const parseNotesData=JSON.parse(notesData)
+                setNotes(parseNotesData);
+        }
     },[authData]);
 
     useEffect(()=>{

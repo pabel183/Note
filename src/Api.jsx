@@ -11,26 +11,25 @@ const fetchData = async (selector) => {
     }
 }
 const addData = async (props) => {
-    console.log("data is sending to addData route.")
     try {
-        await axios.post("http://localhost:4000/update", { data: props.data,selector:props.selector });
+        await axios.post("http://localhost:4000/addData", { data: props.data,selector:props.selector });
     } catch (error) {
         console.error(error);
     }
 }
-const updateData = async (props) => {
-    try {
-        await axios.post("http://localhost:4000/update", { slector: props.data });
-    } catch (error) {
-        console.error(error);
-    }
-}
-const Delete = async (props) => {
-    try {
-        await axios.delete("http://localhost:4000/delete", { slector: props.data });
-    } catch (error) {
-        console.log(error);
-    }
-}
+// const updateData = async (props) => {
+//     try {
+//         await axios.post("http://localhost:4000/update", { slector: props.data });
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+// const Delete = async (props) => {
+//     try {
+//         await axios.delete("http://localhost:4000/delete", { slector: props.data });
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
-export {fetchData, addData, updateData, Delete };
+export {fetchData, addData};
