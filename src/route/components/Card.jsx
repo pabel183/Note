@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import MyContext from "./MyContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-
+import { v4 as uuidv4 } from 'uuid';
 import "./Card.css";
 
 const Card = (props) => {
@@ -68,8 +68,9 @@ const Card = (props) => {
             <h5>{props.date}</h5>
             {holdId.map((item)=>{
                 if(item.id===props.id){
+                    const keyValue=uuidv4();
                     return(
-                        <FontAwesomeIcon icon={faCircleXmark} className="crossIcon" />
+                        <FontAwesomeIcon key={keyValue} icon={faCircleXmark} className="crossIcon" />
                     );
                 }
                 else{

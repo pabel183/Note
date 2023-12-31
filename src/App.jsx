@@ -76,6 +76,7 @@ const App = () => {
                      setNotes(filteredArray);
                 }
                 else{
+                    console.log(dummynotes)
                     setNotes(dummynotes);
                 }
             }

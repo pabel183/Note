@@ -19,17 +19,19 @@ const addData = async (props) => {
 }
 // const updateData = async (props) => {
 //     try {
-//         await axios.post("http://localhost:4000/update", { slector: props.data });
+//         await axios.post("http://localhost:4000/update", { selector: props.data });
 //     } catch (error) {
 //         console.error(error);
 //     }
 // }
-// const Delete = async (props) => {
-//     try {
-//         await axios.delete("http://localhost:4000/delete", { slector: props.data });
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+const Delete = async (props) => {
+    // console.log(props);
+    try {
+        //specifically this (await axios.delete(url, { data:props });) might me passdata only this {data:value} format
+        await axios.delete("http://localhost:4000/delete", { data:props });
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-export {fetchData, addData};
+export {fetchData, addData,Delete};

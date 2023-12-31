@@ -5,15 +5,21 @@ import { faCirclePlus,faMagnifyingGlass,faTrashCan } from '@fortawesome/free-sol
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import MyContext from "../components/MyContext";
-
+import { v4 as uuidv4 } from 'uuid';
 import "./Notes.css";
 import "../components/IconStyle.css";
+import {Delete} from "../../Api";
+import Cookies from 'js-cookie';
 
 const Notes = (props) => {
     const navigate=useNavigate();
     const {notes,setNotes,isHeld,setHoldId,setHeld,holdId}=useContext(MyContext);
     
-    const deleteNotes=()=>{
+    const deleteNotes=async()=>{
+
+        const oldAuthData = Cookies.get("data_validation");          
+        await Delete( {data:holdId,selector:oldAuthData} );
+        
         const updateNotes=notes.filter((item)=>!holdId.some((holdItem)=>holdItem.id===item.id));
         setNotes(updateNotes);
         setHoldId([]);
@@ -41,8 +47,9 @@ const Notes = (props) => {
             <div className={notes.length<6?"controlledContainer":"notesContainer"} >
                 {
                     notes.map((value)=>{
+                        const keyValue=uuidv4();
                         return(
-                            <Card key={value.id} id={value.id} title={value.title} description={value.description} date={value.date} />
+                            <Card key={keyValue} id={value.id} title={value.title} description={value.description} date={value.date} />
                         )
                     })
                 }
