@@ -2,6 +2,7 @@ import { useLocation,useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft,faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+import SignOUt from "../components/Signout";
 
 import "../components/IconStyle.css";
 import "./ShowNote.css";
@@ -30,7 +31,10 @@ const ShowNote=()=>{
         <div className="showNote">
              <div className='showNoteHeader'>
             <FontAwesomeIcon onClick={handleClick} icon={faAngleLeft} data-name='backButton' className="iconStyle" /> 
+            <div className="rightHeader">
+            <SignOUt />            
             <FontAwesomeIcon onClick={handleClick} icon={faPenToSquare} data-name='editButton' className="iconStyle" /> 
+            </div>
             </div>
            <div className="showNoteMain">
             <h1>{title}</h1>

@@ -20,6 +20,11 @@
     margin: 0;
     font-size: 2.5rem;
 }
+.rightHeader{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
 .notesContainer{
     position: absolute;
     left: 0;
@@ -42,13 +47,9 @@ right: 0;
 top: 5rem;
 bottom: 0;
 padding: 0 1rem 1rem;
-overflow-y: scroll;
-scrollbar-width: none;
--ms-overflow-style: none;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows: 1fr 1fr 1fr;
-/* grid-template-rows: auto; */
 gap: 1rem;
 }
 .notesContainer::-webkit-scrollbar {
@@ -69,7 +70,6 @@ gap: 1rem;
     .controlledContainer{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    
     }
     /* .notesContainer > :nth-child(3n+3) {
         grid-column: 1 / span 2 ;

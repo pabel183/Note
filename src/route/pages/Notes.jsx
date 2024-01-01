@@ -1,5 +1,6 @@
 import React,{useContext} from "react";
 import Card from "../components/Card";
+import SignOUt from "../components/Signout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus,faMagnifyingGlass,faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
@@ -19,7 +20,7 @@ const Notes = (props) => {
 
         const oldAuthData = Cookies.get("data_validation");          
         await Delete( {data:holdId,selector:oldAuthData} );
-        
+
         const updateNotes=notes.filter((item)=>!holdId.some((holdItem)=>holdItem.id===item.id));
         setNotes(updateNotes);
         setHoldId([]);
@@ -42,7 +43,10 @@ const Notes = (props) => {
         <div className="notes">
             <div className="notesHeader">
                 <h1>Notes</h1>
+                <div className="rightHeader">
+                <SignOUt/>
                  <FontAwesomeIcon onClick={handleClick} icon={faMagnifyingGlass} className="iconStyle" /> 
+                </div>
             </div>
             <div className={notes.length<6?"controlledContainer":"notesContainer"} >
                 {

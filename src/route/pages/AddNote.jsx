@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Cookies from 'js-cookie';
 import MyContext from '../components/MyContext';
 import Swal from 'sweetalert2';
-
+import SignOUt from '../components/Signout';
 import "./AddNote.css";
 import "../components/IconStyle.css";
 
@@ -62,6 +62,7 @@ const AddNote = () => {
         <div className='addNote'>
             <div className='addNoteHeader'>
                 <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />
+                <SignOUt />
                 <button onClick={handleClick} name='saveButton'>Save</button>
             </div>
             <div className='addNoteMain'>
