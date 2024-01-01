@@ -17,13 +17,13 @@ const addData = async (props) => {
         console.error(error);
     }
 }
-// const updateData = async (props) => {
-//     try {
-//         await axios.post("http://localhost:4000/update", { selector: props.data });
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
+const updateData = async (props) => {
+    try {
+        await axios.put("http://localhost:4000/update", { data: props.data,selector:props.selector });
+    } catch (error) {
+        console.error(error);
+    }
+}
 const Delete = async (props) => {
     // console.log(props);
     try {
@@ -34,4 +34,4 @@ const Delete = async (props) => {
     }
 }
 
-export {fetchData, addData,Delete};
+export {fetchData, addData,Delete,updateData};

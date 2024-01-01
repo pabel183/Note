@@ -6,6 +6,7 @@ import Home from "./route/pages/Home";
 import AddNote from "./route/pages/AddNote";
 import MyContext from "./route/components/MyContext";
 import ShowNote from "./route/pages/ShowNote";
+import UpdateNote from "./route/pages/UpdateNote";
 import { fetchData,addData } from "./Api";
 
 import "./App.css"
@@ -71,6 +72,7 @@ const App = () => {
                                 <Route path="/notes" element={<Notes />} />
                                 <Route path="/addNote" element={<AddNote />} />
                                 <Route path="/showNote" element={<ShowNote />} />
+                                <Route path="/updateNote" element={<UpdateNote />}/>
                             </>
                             :
                             <Route path="/*" element={<Home authData={authData} />} />
