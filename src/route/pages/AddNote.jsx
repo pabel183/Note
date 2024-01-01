@@ -62,8 +62,10 @@ const AddNote = () => {
         <div className='addNote'>
             <div className='addNoteHeader'>
                 <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />
+                <div className="rightHeader">
                 <SignOUt />
                 <button onClick={handleClick} name='saveButton'>Save</button>
+                </div>
             </div>
             <div className='addNoteMain'>
                 <input onChange={handleChange} value={notesValue.title} name='title' placeholder='Title' />
