@@ -23,7 +23,13 @@
 .rightHeader{
     display: flex;
     flex-direction: row;
-    gap: 3rem;
+    gap: 1rem;
+}
+.rightHeader input{
+    padding: .4rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    border-radius: .6rem;
 }
 .notesContainer{
     position: absolute;
@@ -66,6 +72,20 @@ gap: 1rem;
     .notesContainer{
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 1rem;
+    }
+    .title{
+        display: none;
+    }
+    .rightHeader{
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+    }
+    .rightHeader input{
+        padding: .5rem;
+        height: 1.5rem;
+        font-size: 1rem;
+        width: 80%;
     }
     .controlledContainer{
     grid-template-columns: 1fr 1fr;

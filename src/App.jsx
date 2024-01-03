@@ -15,6 +15,7 @@ const App = () => {
     const [holdId, setHoldId] = useState([]);
     const [isHeld, setHeld] = useState(false);
     const [authData, setAuthData] = useState(null);
+    const [tempNotes,setTempNotes]=useState("");
     const searchParams = new URLSearchParams(window.location.search);
     let tokenParam = null;
     if (searchParams.size > 0) {
@@ -52,6 +53,7 @@ const App = () => {
             const dummynotes=await fetchData(oldAuthData);
             if(dummynotes){
                 setNotes(dummynotes);
+                setTempNotes(dummynotes);
             }
     
         }
@@ -62,7 +64,7 @@ const App = () => {
     
 
     return (
-        <MyContext.Provider value={{ notes: notes, setNotes: setNotes, holdId, setHoldId, isHeld, setHeld,setAuthData }}>
+        <MyContext.Provider value={{ notes: notes, setNotes: setNotes, holdId, setHoldId, isHeld, setHeld,setAuthData,tempNotes,setTempNotes }}>
             <Router>
                 <Routes>
                     {

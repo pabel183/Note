@@ -68,8 +68,8 @@ const UpdateNote = () => {
             <div className='updateNoteHeader'>
                 <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />
                 <div className="rightHeader">
-                    <SignOUt />
                     <button onClick={handleClick} name='updateButton'>Update</button>
+                    <SignOUt />
                 </div>
             </div>
             <div className='updateNoteMain'>
