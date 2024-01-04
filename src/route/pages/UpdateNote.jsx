@@ -31,7 +31,21 @@ const UpdateNote = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setTitleValue({ ...notesValue, [name]: value, date: currentDate });
+        const sliceValue=value.slice(0,80);
+        if(name==="title"){
+            if(value.length>80){
+                
+                Swal.fire({
+                    text:"please give the title within 100 letters",
+                    position:"center",
+                    width:"15rem",
+                    timer:1000,
+                    showConfirmButton:false,
+                  }
+                  );
+            }
+        }
+        setTitleValue({ ...notesValue, [name]: sliceValue, date: currentDate });
     }
 
     const handleClick = (event) => {
