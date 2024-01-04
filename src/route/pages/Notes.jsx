@@ -71,12 +71,13 @@ const Notes = (props) => {
           };
     },[ref]);
     return (
-        <div className="notes" ref={ref}>
+        <div className={"notes"} ref={ref}>
             <div className="notesHeader">
                 {isSubmit
                     ? <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />
+                    // : <h1>Notes</h1>}
                     : <h1 className= {isSerachButtonClicked?"title":""} >Notes</h1>}
-                <div className="rightHeader">
+                <div className={"rightHeader "+ (isSerachButtonClicked?"searchBarRightHeader":"searchIconRightHeader") }> 
                     {isSerachButtonClicked
                         ?
                         <form onSubmit={handleSubmit}>
