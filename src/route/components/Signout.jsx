@@ -5,7 +5,8 @@ import MyContext from "./MyContext";
 import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
 
-import "./Signout.css";
+import "./IconStyle.css";
+// import "./Signout.css";
 
 const SignOUt = () => {
     const navigate=useNavigate();
@@ -18,8 +19,7 @@ const SignOUt = () => {
 
     return (
         <div className='signOut' onClick={handleClick}>
-            <FontAwesomeIcon className='signOutIconStyle' icon={faArrowRightFromBracket} />
-            <h2>SignOut</h2>
+            <FontAwesomeIcon className='iconStyle' icon={faArrowRightFromBracket} />
         </div>
     );
 }

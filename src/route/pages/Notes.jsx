@@ -103,7 +103,7 @@ const Notes = (props) => {
                     isHeld ?
                         <FontAwesomeIcon onClick={deleteNotes} icon={faTrashCan} style={{ color: "#c92115", fontSize: "3rem" }} />
                         :
-                        <FontAwesomeIcon onClick={() => navigate("/addNote")} icon={faCirclePlus} style={{ color: "#0a0a0a", fontSize: "5rem" }} />
+                        <FontAwesomeIcon onClick={() => navigate("/addNote")} icon={faCirclePlus} style={{ color: "#252525", fontSize: "4rem", backgroundColor: "white", borderRadius: "100%" }} />
                 }
             </div>
         </div>

@@ -19,6 +19,7 @@
 .notesHeader h1{
     margin: 0;
     font-size: 2.5rem;
+    font-weight: 400;
 }
 .rightHeader{
     display: flex;
@@ -43,19 +44,18 @@
     -ms-overflow-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-template-rows: auto;
+    grid-auto-rows: auto minmax(250px 1fr);
     gap: 1rem;
 }
 .controlledContainer{
     position: absolute;
-left: 0;
-right: 0;
-top: 5rem;
-bottom: 0;
-padding: 0 1rem 1rem;
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows: 1fr 1fr 1fr;
+    left: 0;
+    right: 0;
+    top: 5rem;
+    bottom: 0;
+    padding: 0 1rem 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 gap: 1rem;
 }
 .notesContainer::-webkit-scrollbar {
@@ -91,7 +91,7 @@ gap: 1rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     }
-    /* .notesContainer > :nth-child(3n+3) {
+     .notesContainer > :nth-child(3n+3) {
         grid-column: 1 / span 2 ;
-      } */
+      } 
 }

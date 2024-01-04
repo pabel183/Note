@@ -6,7 +6,7 @@
     border-radius: .5rem;
     color: black;
     background-color: var(--backgroundColor);
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: .5rem;
 }
@@ -23,4 +23,8 @@
         width: 1.5rem;
         display: flex;
         align-self: self-end;
+}
+h3{
+    word-break: break-word;
+    /* word-wrap: break-word; */
 }

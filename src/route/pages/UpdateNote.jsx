@@ -35,19 +35,7 @@ const UpdateNote = () => {
     }
 
     const handleClick = (event) => {
-
         if (event.target.name === "updateButton") {
-            // if ((notesValue.description === "")) {
-            //     Swal.fire({
-            //         text: "Please fill up your notes",
-            //         position: "center",
-            //         width: "15rem",
-            //         timer: 1000,
-            //         showConfirmButton: false,
-            //     }
-            //     );
-            // }
-            // else {
                 const updatedNotes=notes.map(item=>{
                     if(item.id===notesValue.id) return notesValue;
                     else return item
@@ -56,12 +44,10 @@ const UpdateNote = () => {
                 const oldAuthData = Cookies.get("data_validation");
                 updateData({data:notesValue,selector:oldAuthData});
                 navigate("/notes");
-            //}
         }
         else {
             navigate("/notes");
         }
-
     }
     return (
         <div className='updateNote'>
