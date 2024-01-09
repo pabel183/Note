@@ -32,7 +32,7 @@ const ShowNote=()=>{
         <div className="showNote">
              <div className='showNoteHeader'>
             <FontAwesomeIcon onClick={handleClick} icon={faAngleLeft} data-name='backButton' className="iconStyle" /> 
-            <div className="rightHeader">
+            <div className="showNoterightHeader">
             <FontAwesomeIcon onClick={handleClick} icon={faPenToSquare} data-name='editButton' className="iconStyle" /> 
             <SignOUt />            
             </div>

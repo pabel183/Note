@@ -67,7 +67,7 @@ const UpdateNote = () => {
         <div className='updateNote'>
             <div className='updateNoteHeader'>
                 <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />
-                <div className="rightHeader">
+                <div className="updateNoterightHeader">
                     <button onClick={handleClick} name='updateButton'>Update</button>
                     <SignOUt />
                 </div>
