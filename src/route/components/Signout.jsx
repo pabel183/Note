@@ -7,7 +7,6 @@ import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 
 import "./IconStyle.css";
-// import "./Signout.css";
 
 const SignOUt = () => {
     const navigate=useNavigate();
@@ -22,16 +21,10 @@ const SignOUt = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, Sign Out"
           }).then((result) => {
-            // console.log(result);
             if (result.value) {
                   Cookies.remove("data_validation");
                   setAuthData(null);
                   navigate("/");
-            //     Swal.fire({
-            //     title: "Deleted!",
-            //     text: "Your file has been deleted.",
-            //     icon: "success"
-            //   });
             }
           });
     }

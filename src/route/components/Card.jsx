@@ -9,7 +9,7 @@ import "./Card.css";
 const Card = (props) => {
     const navigate = useNavigate();
     const cardColor = ["#E6E6FA", "#B0E0E6", "#FFB6C1", "#FFE4E1", "#FFDAB9", "#FFFACD", "#AFEEEE", "#F0FFF0", "#FFF0F5", "#F0F8FF"];
-    //const cardColor = ["Lavender", "PowderBlue", "LightPink", "MistyRose", "PeachPuff", "LemonChiffon", "PaleTurquoise", "Honeydew", "LavenderBlush", "AliceBlue"];
+ //   const cardColor = ["Lavender", "PowderBlue", "LightPink", "MistyRose", "PeachPuff", "LemonChiffon", "PaleTurquoise", "Honeydew", "LavenderBlush", "AliceBlue"];
     const colorIndex=Math.floor(Math.random()*10);
     const style={
         '--backgroundColor':cardColor[colorIndex],

@@ -13,16 +13,7 @@ const ShowNote=()=>{
     const {id,title,description,date}=location.state?.data;
     const handleClick=(event)=>{
         if (event.currentTarget.dataset.name==="editButton"){
-        //console.log(event.currentTarget.dataset.name);
         navigate("/updateNote", { state: { data: { id: id, title: title, description: description} } });
-        // Swal.fire({
-        //     text:"upcomming!",
-        //     position:"top-end",
-        //     width:"10rem",
-        //     timer:500,
-        //     showConfirmButton:false,
-        //   }
-        //   );
         }
         else{
         navigate("/notes");

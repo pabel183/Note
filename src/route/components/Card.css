@@ -1,7 +1,6 @@
 .card{
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     padding: .5rem;
     border-radius: .5rem;
     color: black;
@@ -26,5 +25,4 @@
 }
 h3{
     word-break: break-word;
-    /* word-wrap: break-word; */
 }
