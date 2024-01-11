@@ -1,5 +1,6 @@
 import axios from "axios";
 const url=process.env.REACT_APP_URL;
+//console.log(url);
 const fetchData = async (selector) => {
     try {
         const value = (await axios.post(url+"/fetchdata", {selector:selector} )).data;
