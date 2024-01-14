@@ -9,12 +9,12 @@ import MyContext from "../components/MyContext";
 import { v4 as uuidv4 } from 'uuid';
 import "./Notes.css";
 import "../components/IconStyle.css";
-import { Delete } from "../../Api";
+import { fetchData,Delete } from "../../Api";
 import Cookies from 'js-cookie';
 
 const Notes = (props) => {
     const navigate = useNavigate();
-    const { notes, setNotes, isHeld, setHoldId, setHeld, holdId, tempNotes } = useContext(MyContext);
+    const { notes, setNotes, isHeld, setHoldId, setHeld, holdId, tempNotes, setTempNotes } = useContext(MyContext);
     const ref = useRef(null);
     const [isSerachButtonClicked, setSerachButtonClicked] = useState(false);
     const [isSubmit, setSubmit] = useState(false);
@@ -70,6 +70,20 @@ const Notes = (props) => {
             document.removeEventListener('mousedown', handleClickOutside);
           };
     },[ref]);
+    useEffect(() => {
+        const fetch=async()=>{
+            const oldAuthData = Cookies.get("data_validation");
+            const dummynotes=await fetchData(oldAuthData);
+            if(dummynotes){
+                setNotes(dummynotes);
+                setTempNotes(dummynotes);
+            }
+    
+        }
+        
+        fetch();
+        
+    },[]);
     return (
         <div className={"notes"} ref={ref}>
             <div className="notesHeader">

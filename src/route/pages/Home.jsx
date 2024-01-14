@@ -11,8 +11,8 @@ const Home = (props) => {
         <div className="Home" >
             {props.authData
                 ? <Notes />
-                // : <form action="http://localhost:4000/auth/google" method="Get">
-                : <form action="https://kitten-teddy.cyclic.app/auth/google" method="Get">
+                 // : <form action="http://localhost:4000/auth/google" method="Get">
+                 : <form action="https://kitten-teddy.cyclic.app/auth/google" method="Get">
                     <button className="googleSignInButton">
                         <FontAwesomeIcon className="googelIcon" icon={faGoogle} style={{ color: "#c12115" }} />
                         google signin
