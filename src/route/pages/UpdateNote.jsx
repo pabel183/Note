@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid';
 import Cookies from 'js-cookie';
 import MyContext from '../components/MyContext';
 import Swal from 'sweetalert2';
-import SignOUt from '../components/Signout';
 import "./UpdateNote.css";
 import "../components/IconStyle.css";
 
@@ -69,7 +68,6 @@ const UpdateNote = () => {
                 <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />
                 <div className="updateNoterightHeader">
                     <button onClick={handleClick} name='updateButton'>Update</button>
-                    <SignOUt />
                 </div>
             </div>
             <div className='updateNoteMain'>
