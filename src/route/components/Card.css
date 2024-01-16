@@ -26,3 +26,10 @@
 h3{
     word-break: break-word;
 }
+h5{
+    color: #9e9595;
+
+}
+h3,h4,h5{
+    margin: 0;
+}

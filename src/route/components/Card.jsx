@@ -67,6 +67,7 @@ const Card = (props) => {
                 {props.title}
             </h3>
             <h5>{props.date}</h5>
+            <h4>{props.description}</h4>
             {holdId.map((item)=>{
                 if(item.id===props.id){
                     const keyValue=uuidv4();

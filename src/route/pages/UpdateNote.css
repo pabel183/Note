@@ -42,7 +42,7 @@
     padding: .5rem;
     background-color: transparent;
     font-weight: bold;
-    color: #FEFEFE;
+    color: #3B3B3B;
 }
 .updateNoteMain textarea{
     height: 15rem;
@@ -50,5 +50,5 @@
     padding: .5rem;
     background-color: transparent;
     font-weight: bold;
-    color: #FEFEFE;
+    color: #3B3B3B;
 }

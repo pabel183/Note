@@ -41,7 +41,7 @@
     background-color: transparent;
     border: none;
     font-weight: bold;
-    color: #FEFEFE;
+    color: black;
     font-weight: 400;
 }
 .addNoteMain textarea{
@@ -51,6 +51,6 @@
     background-color: transparent;
     border: none;
     font-weight: bold;
-    color: #FEFEFE;
+    color: black;
     font-weight: 400;
 }
