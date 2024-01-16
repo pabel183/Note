@@ -27,9 +27,22 @@ h3{
     word-break: break-word;
 }
 h5{
-    color: #9e9595;
+    color: #878383;
+    font-weight: 300;
 
 }
 h3,h4,h5{
     margin: 0;
+}
+.menu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    align-self: self-end;
+    z-index: 1;
+    background-color: white;
+    border-radius: .5rem;
+    padding: .4rem;
+    gap: .4rem;
 }

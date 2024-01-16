@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState,useRef } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import Card from "../components/Card";
 import SignOUt from "../components/Signout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faCirclePlus, faMagnifyingGlass, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faCirclePlus, faMagnifyingGlass, faTrashCan, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import MyContext from "../components/MyContext";
 import { v4 as uuidv4 } from 'uuid';
 import "./Notes.css";
 import "../components/IconStyle.css";
-import { fetchData,Delete } from "../../Api";
+import { fetchData, Delete } from "../../Api";
 import Cookies from 'js-cookie';
 
 const Notes = (props) => {
@@ -56,42 +56,42 @@ const Notes = (props) => {
             setNotes(result);
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         function handleClickOutside(event) {
             if (ref.current && !ref.current.contains(event.target)) {
                 setSerachButtonClicked(false);
                 setSubmit(true);
                 console.log("submitted")
             }
-          }
-      
-          document.addEventListener('mousedown', handleClickOutside);
-          return () => {
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
             document.removeEventListener('mousedown', handleClickOutside);
-          };
-    },[ref]);
+        };
+    }, [ref]);
     useEffect(() => {
-        const fetch=async()=>{
+        const fetch = async () => {
             const oldAuthData = Cookies.get("data_validation");
-            const dummynotes=await fetchData(oldAuthData);
-            if(dummynotes){
+            const dummynotes = await fetchData(oldAuthData);
+            if (dummynotes) {
                 setNotes(dummynotes);
                 setTempNotes(dummynotes);
             }
-    
+
         }
-        
+
         fetch();
-        
-    },[]);
+
+    }, []);
     return (
         <div className={"notes"} ref={ref}>
             <div className="notesHeader">
                 {isSubmit
                     ? <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />
                     // : <h1>Notes</h1>}
-                    : <h1 className= {isSerachButtonClicked?"title":""} >Notes</h1>}
-                <div className={"rightHeader "+ (isSerachButtonClicked?"searchBarRightHeader":"searchIconRightHeader") }> 
+                    : <h1 className={isSerachButtonClicked ? "title" : ""} >Notes</h1>}
+                <div className={"rightHeader " + (isSerachButtonClicked ? "searchBarRightHeader" : "searchIconRightHeader")}>
                     {isSerachButtonClicked
                         ?
                         <form onSubmit={handleSubmit}>
@@ -114,12 +114,14 @@ const Notes = (props) => {
                 }
             </div>
             <div className="addIcon">
-                {
+                {/* {
                     isHeld ?
-                        <FontAwesomeIcon onClick={deleteNotes} icon={faTrashCan} style={{ color: "#c92115", fontSize: "3rem" }} />
+                        <FontAwesomeIcon onClick={deleteNotes} icon={faTrashCan} style={{ color: "#c92115", fontSize: "2.5rem" }} />
                         :
-                        <FontAwesomeIcon onClick={() => navigate("/addNote")} icon={faCirclePlus} style={{ color: "#252525", fontSize: "4rem", backgroundColor: "white", borderRadius: "100%" }} />
-                }
+                        // <FontAwesomeIcon onClick={() => navigate("/addNote")} icon={faCirclePlus} style={{ color: "#252525", fontSize: "4rem", backgroundColor: "white", borderRadius: "100%" }} />
+                        <FontAwesomeIcon onClick={() => navigate("/addNote")} icon={faPenToSquare} style={{ color: "#252525", fontSize: "2.5rem", backgroundColor: "white", borderRadius: "100%" }} />
+                } */}
+                <FontAwesomeIcon onClick={() => navigate("/addNote")} icon={faPenToSquare} style={{ color: "#252525", fontSize: "2.5rem", backgroundColor: "white", borderRadius: "100%" }} />
             </div>
         </div>
     )
