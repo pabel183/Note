@@ -14,12 +14,13 @@ const SignOUt = () => {
     const handleClick=()=>{
         Swal.fire({
             title: "Are you sure?",
-            text: "You will SignOut!",
-            icon: "warning",
+            // text: "You will SignOut!",
+            // icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Sign Out"
+            confirmButtonText: "Yes, Sign Out",
+            width:355,
           }).then((result) => {
             if (result.value) {
                   Cookies.remove("data_validation");
