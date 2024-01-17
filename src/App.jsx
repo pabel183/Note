@@ -49,6 +49,7 @@ const App = () => {
     });
     useEffect(() => {
         const fetch=async()=>{
+            console.log("apit fetchmethod");
             const oldAuthData = Cookies.get("data_validation");
             const dummynotes=await fetchData(oldAuthData);
             if(dummynotes){

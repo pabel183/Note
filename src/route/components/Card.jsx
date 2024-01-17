@@ -113,7 +113,7 @@ const Card = (props) => {
             })} */}
             </div>
             <h3>
-                {props.title.length===0?"undefined":props.title}
+                {props.title}
             </h3>
             <h5>{props.date}</h5>
             <h4>{props.description}</h4>

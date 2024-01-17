@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import SignOUt from "../components/Signout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faCirclePlus, faMagnifyingGlass, faTrashCan, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import Swal from 'sweetalert2'
 import MyContext from "../components/MyContext";
 import { v4 as uuidv4 } from 'uuid';
@@ -19,14 +19,14 @@ const Notes = (props) => {
     const [isSerachButtonClicked, setSerachButtonClicked] = useState(false);
     const [isSubmit, setSubmit] = useState(false);
     const [searchValue, setSearchValue] = useState("");
-    const deleteNotes = async () => {
-        const oldAuthData = Cookies.get("data_validation");
-        await Delete({ data: holdId, selector: oldAuthData });
-        const updateNotes = notes.filter((item) => !holdId.some((holdItem) => holdItem.id === item.id));
-        setNotes(updateNotes);
-        setHoldId([]);
-        setHeld(false);
-    }
+    // const deleteNotes = async () => {
+    //     const oldAuthData = Cookies.get("data_validation");
+    //     await Delete({ data: holdId, selector: oldAuthData });
+    //     const updateNotes = notes.filter((item) => !holdId.some((holdItem) => holdItem.id === item.id));
+    //     setNotes(updateNotes);
+    //     setHoldId([]);
+    //     setHeld(false);
+    // }
 
     const handleClick = (event) => {
         const name = event.target.getAttribute("name");
@@ -70,22 +70,9 @@ const Notes = (props) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [ref]);
-    useEffect(() => {
-        const fetch = async () => {
-            const oldAuthData = Cookies.get("data_validation");
-            const dummynotes = await fetchData(oldAuthData);
-            if (dummynotes) {
-                setNotes(dummynotes);
-                setTempNotes(dummynotes);
-            }
 
-        }
-
-        fetch();
-
-    }, []);
     return (
-        <div className={"notes"} ref={ref}>
+        <div className={"notes"} >
             <div className="notesHeader">
                 {isSubmit
                     ? <FontAwesomeIcon onClick={handleClick} name='backButton' icon={faAngleLeft} className='iconStyle' />

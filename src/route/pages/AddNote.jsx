@@ -65,6 +65,8 @@ const AddNote = () => {
                  const oldAuthData = Cookies.get("data_validation");
                  addData({data:notesValue,selector:oldAuthData});
                 navigate("/notes");
+                // navigate("/notes", { state: { data: { notesValue } } });
+           
             }
         }
         else {
