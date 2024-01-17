@@ -1,6 +1,6 @@
 import axios from "axios";
-// const url=process.env.REACT_APP_URL;
-const url="http://localhost:4000";
+const url=process.env.REACT_APP_URL;
+// const url="http://localhost:4000";
 console.log("url:");
 console.log(url);
 console.log("url:");
