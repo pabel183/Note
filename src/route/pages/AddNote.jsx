@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,8 @@ import {addData} from "../../Api";
 const AddNote = () => {
     const navigate = useNavigate();
     const { notes, setNotes } = useContext(MyContext);
+    const inputRef=useRef(null);
+    const textareaRef=useRef(null);
     const date = new Date();
     const options = { month: 'short', day: '2-digit', year: 'numeric' };
     const currentDate = date.toLocaleDateString('en-US', options).toString();
@@ -76,6 +78,19 @@ const AddNote = () => {
         }
         
     }
+    useEffect(()=>{
+        inputRef.current.focus();
+    },[])
+    const handleKeyDown=(event)=>{
+        if (event.key === "Enter") {
+            event.preventDefault();
+            textareaRef.current.focus();
+          }
+        // if(event.key==="Enter"){
+        //     event.preventDefault();
+        //     textareaRef.current.focus();
+        // }
+    }
     return (
         <div className='addNote'>
             <div className='addNoteHeader'>
@@ -85,8 +100,8 @@ const AddNote = () => {
                 </div>
             </div>
             <div className='addNoteMain'>
-                <input onChange={handleChange} value={notesValue.title} name='title' placeholder='Title' />
-                <textarea onChange={handleChange} value={notesValue.description} name='description' placeholder="Type something..." />
+                <input ref={inputRef} tabIndex={1} onKeyDown={handleKeyDown} onChange={handleChange} value={notesValue.title} name='title' placeholder='Title' />
+                <textarea ref={textareaRef} tabIndex={2} onChange={handleChange} value={notesValue.description} name='description' placeholder="Type something..." />
             </div>
         </div>
     )

@@ -33,6 +33,7 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 2rem;
+    padding: 0 1rem;
 }
 .addNoteMain input{
     height: 4rem;
