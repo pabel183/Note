@@ -22,14 +22,16 @@ const AddNote = () => {
             id: null,
             title: "",
             date: null,
-            description: ""
+            description: "",
+            colorIndex:null
         }
     );
-
+    const notesLength=notes.length+1;
+    const colorIndex = notesLength%10;
     const handleChange = (event) => {
         const id=uuidv4();
         const { name, value } = event.target;
-        const sliceValue=value.slice(0,80);
+        let sliceValue=value.slice(0,80);
         if(name==="title"){
             if(value.length>80){
                 
@@ -43,7 +45,7 @@ const AddNote = () => {
                   );
             }
         }
-        setTitleValue({ ...notesValue,id:id, [name]: sliceValue, date: currentDate });
+        setTitleValue({ ...notesValue,id:id, [name]: sliceValue, date: currentDate,colorIndex });
     }
     const handleClick = (event) => {
 

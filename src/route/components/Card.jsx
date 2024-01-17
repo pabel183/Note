@@ -11,16 +11,23 @@ import "./Card.css";
 
 const Card = (props) => {
     const navigate = useNavigate();
-    const cardColor = ["#E6E6FA", "#B0E0E6", "#FFB6C1", "#FFE4E1", "#FFDAB9", "#FFFACD", "#AFEEEE", "#F0FFF0", "#FFF0F5", "#F0F8FF"];
-    //   const cardColor = ["Lavender", "PowderBlue", "LightPink", "MistyRose", "PeachPuff", "LemonChiffon", "PaleTurquoise", "Honeydew", "LavenderBlush", "AliceBlue"];
-    const colorIndex = Math.floor(Math.random() * 10);
-    const style = {
-        '--backgroundColor': cardColor[colorIndex],
-    }
-
     const { notes, setNotes, isHeld, setHoldId, setHeld, holdId, tempNotes, setTempNotes } = useContext(MyContext);
     const [cardId,setCardId]=useState([]);
     const [selectedCard,setSelectedCard]=useState(false);
+    const cardColor = ["#E6E6FA", "#B0E0E6", "#FFB6C1", "#FFE4E1", "#FFDAB9", "#FFFACD", "#AFEEEE", "#F0FFF0", "#FFF0F5", "#F0F8FF"];
+    //   const cardColor = ["Lavender", "PowderBlue", "LightPink", "MistyRose", "PeachPuff", "LemonChiffon", "PaleTurquoise", "Honeydew", "LavenderBlush", "AliceBlue"];
+    let colorIndex=0;
+    notes.map((object)=>{
+        if(object.id===props.id){
+            colorIndex=object.colorIndex;
+        }
+    });
+
+    // console.log(notes);
+    const style = {
+        '--backgroundColor': cardColor[colorIndex],
+    }
+    
     const deleteCard = async (event) => {
         event.stopPropagation();
         const oldAuthData = Cookies.get("data_validation");
@@ -46,7 +53,7 @@ const Card = (props) => {
             event.stopPropagation();
             setCardId([...cardId, { id: props.id }]);
             setSelectedCard(true);
-            console.log(props.id);
+            // console.log(props.id);
         }
         else {
             console.log("else");
@@ -77,8 +84,8 @@ const Card = (props) => {
     }
     return (
         <div
-            className={"card " + (isHeld ? "deleteEnv" : "")}
-            style={style} onClick={handleClick}
+        className={"card " + (isHeld ? "deleteEnv" : "")}
+        style={style} onClick={handleClick}
             // onMouseDown={handleMouseDown}
             // onMouseUp={handleMouseUp}
 
@@ -106,7 +113,7 @@ const Card = (props) => {
             })} */}
             </div>
             <h3>
-                {props.title}
+                {props.title.length===0?"undefined":props.title}
             </h3>
             <h5>{props.date}</h5>
             <h4>{props.description}</h4>
