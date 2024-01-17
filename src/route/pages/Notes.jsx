@@ -95,7 +95,7 @@ const Notes = (props) => {
                     notes.map((value) => {
                         const keyValue = uuidv4();
                         return (
-                            <Card key={keyValue} id={value.id} title={value.title} description={value.description} date={value.date} />
+                            <Card key={keyValue} id={value.id} title={value.title} description={value.description} date={value.date} colorIndex={value.colorIndex} />
                         )
                     })
                 }

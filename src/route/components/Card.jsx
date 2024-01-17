@@ -16,16 +16,16 @@ const Card = (props) => {
     const [selectedCard,setSelectedCard]=useState(false);
     const cardColor = ["#E6E6FA", "#B0E0E6", "#FFB6C1", "#FFE4E1", "#FFDAB9", "#FFFACD", "#AFEEEE", "#F0FFF0", "#FFF0F5", "#F0F8FF"];
     //   const cardColor = ["Lavender", "PowderBlue", "LightPink", "MistyRose", "PeachPuff", "LemonChiffon", "PaleTurquoise", "Honeydew", "LavenderBlush", "AliceBlue"];
-    let colorIndex=0;
-    notes.map((object)=>{
-        if(object.id===props.id){
-            colorIndex=object.colorIndex;
-        }
-    });
+    // let colorIndex=0;
+    // notes.map((object)=>{
+    //     if(object.id===props.id){
+    //         colorIndex=object.colorIndex;
+    //     }
+    // });
 
     // console.log(notes);
     const style = {
-        '--backgroundColor': cardColor[colorIndex],
+        '--backgroundColor': cardColor[props.colorIndex],
     }
     
     const deleteCard = async (event) => {
@@ -58,7 +58,7 @@ const Card = (props) => {
         else {
             console.log("else");
             if (isHeld === false) {
-                navigate("/showNote", { state: { data: { id: props.id, title: props.title, description: props.description, date: props.date } } });
+                navigate("/showNote", { state: { data: { id: props.id, title: props.title, description: props.description, date: props.date, colorIndex: props.colorIndex } } });
             }
             else {
                 const foundedId = holdId.filter((item) => item.id === props.id);
@@ -114,9 +114,11 @@ const Card = (props) => {
             </div>
             <h3>
                 {props.title}
+                {/* {props.title.length===0?"Undefined":props.title} */}
             </h3>
             <h5>{props.date}</h5>
             <h4>{props.description}</h4>
+            {/* <h4>{props.description.length>150?props.description.slice(0,150):props.description}</h4> */}
             
 
         </div>

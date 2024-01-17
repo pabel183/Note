@@ -31,8 +31,8 @@ const AddNote = () => {
     const handleChange = (event) => {
         const id=uuidv4();
         const { name, value } = event.target;
-        let sliceValue=value.slice(0,80);
         if(name==="title"){
+            let sliceValue=value.slice(0,80);
             if(value.length>80){
                 
                 Swal.fire({
@@ -44,8 +44,12 @@ const AddNote = () => {
                   }
                   );
             }
+            setTitleValue({ ...notesValue,id:id, [name]: sliceValue, date: currentDate,colorIndex });
         }
-        setTitleValue({ ...notesValue,id:id, [name]: sliceValue, date: currentDate,colorIndex });
+        else{
+            let sliceValue=value;
+            setTitleValue({ ...notesValue,id:id, [name]: sliceValue, date: currentDate,colorIndex });
+        }
     }
     const handleClick = (event) => {
 
@@ -65,8 +69,6 @@ const AddNote = () => {
                  const oldAuthData = Cookies.get("data_validation");
                  addData({data:notesValue,selector:oldAuthData});
                 navigate("/notes");
-                // navigate("/notes", { state: { data: { notesValue } } });
-           
             }
         }
         else {

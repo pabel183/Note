@@ -14,7 +14,7 @@ import { updateData } from "../../Api";
 const UpdateNote = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { id, title, description } = location.state?.data;
+    const { id, title, description, colorIndex } = location.state?.data;
     const { notes, setNotes } = useContext(MyContext);
     const date = new Date();
     const options = { month: 'short', day: '2-digit', year: 'numeric' };
@@ -25,13 +25,14 @@ const UpdateNote = () => {
             title,
             date: null,
             description,
+            colorIndex,
         }
     );
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        const sliceValue=value.slice(0,80);
         if(name==="title"){
+            let sliceValue=value.slice(0,80);
             if(value.length>80){
                 
                 Swal.fire({
@@ -40,11 +41,13 @@ const UpdateNote = () => {
                     width:"15rem",
                     timer:1000,
                     showConfirmButton:false,
-                  }
-                  );
+                }
+                );
             }
+            setTitleValue({ ...notesValue,id:id, [name]: sliceValue, date: currentDate, colorIndex: colorIndex });
         }
-        setTitleValue({ ...notesValue, [name]: sliceValue, date: currentDate });
+        const sliceValue=value;
+        setTitleValue({ ...notesValue,id:id, [name]: sliceValue, date: currentDate, colorIndex: colorIndex });
     }
 
     const handleClick = (event) => {

@@ -9,10 +9,10 @@ import "./ShowNote.css";
 const ShowNote=()=>{
     const location=useLocation();
     const navigate=useNavigate();
-    const {id,title,description,date}=location.state?.data;
+    const {id,title,description,date,colorIndex}=location.state?.data;
     const handleClick=(event)=>{
         if (event.currentTarget.dataset.name==="editButton"){
-        navigate("/updateNote", { state: { data: { id: id, title: title, description: description} } });
+        navigate("/updateNote", { state: { data: { id: id, title: title, description: description, colorIndex:colorIndex} } });
         }
         else{
         navigate("/notes");
