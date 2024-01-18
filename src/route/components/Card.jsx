@@ -95,9 +95,9 @@ const Card = (props) => {
             <div className="menu">
             
             {selectedCard
-            ?<FontAwesomeIcon onClick={deleteCard} icon={faTrashCan} style={{ color: "#c92115", fontSize: "1rem" }} />
-            :<button onClick={deleteCard}>delete</button>
-            // :<FontAwesomeIcon onClick={handleClick} data-name="handleCard" icon={faEllipsis} />
+            // ?<FontAwesomeIcon onClick={deleteCard} icon={faTrashCan} style={{ color: "#c92115", fontSize: "1rem" }} />
+            ?<button onClick={deleteCard}>delete</button>
+            :<FontAwesomeIcon onClick={handleClick} data-name="handleCard" icon={faEllipsis} />
             }
             {/* {selectedCard?<button onClick={deleteCard}>cancel</button>:""} */}
             {/* {holdId.map((item) => {
