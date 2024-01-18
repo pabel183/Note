@@ -13,12 +13,13 @@
     background-color: #9ad1f0;
     justify-content: center;
     align-items:center;
+    background-image: url("../images/homeLogoBackground.png");
 }
-.homeLogo img{
+/* .homeLogo img{
     height: 10rem;
     width: 10rem;
     padding-bottom: 5%;
-}
+} */
 .homeLogin{
     position: absolute;
     top: 45%;

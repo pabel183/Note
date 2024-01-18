@@ -16,7 +16,7 @@ const Home = (props) => {
                 :
                 <>
                     <div className="homeLogo">
-                        <img src={notepadImage} alt="notepadImage" />
+                        {/* <img src={notepadImage} alt="notepadImage" /> */}
                     </div>
                     <div className="homeLogin">
                         <h1>Sign In With</h1>
