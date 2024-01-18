@@ -37,7 +37,7 @@
     padding: 0 1rem;
 }
 
-.updateNoteMain input:focus{
+.updateNoteMain input{
     height: 4rem;
     font-size: 2rem;
     padding: .5rem;
@@ -47,7 +47,7 @@
     color: black;
     font-weight: 400;
 }
-.updateNoteMain textarea:focus{
+.updateNoteMain textarea{
     height: 15rem;
     font-size: 1.4rem;
     padding: .5rem;
