@@ -36,19 +36,41 @@
     gap: 2rem;
     padding: 0 1rem;
 }
-.updateNoteMain input{
+/* .updateNoteMain input{
     height: 4rem;
-    font-size: 3rem;
-    padding: .5rem;
-    background-color: transparent;
-    font-weight: bold;
-    color: #3B3B3B;
-}
-.updateNoteMain textarea{
-    height: 15rem;
     font-size: 2rem;
     padding: .5rem;
     background-color: transparent;
     font-weight: bold;
     color: #3B3B3B;
+    font-weight: 400;
+}
+.updateNoteMain textarea{
+    height: 15rem;
+    font-size: 1.4rem;
+    padding: .5rem;
+    background-color: transparent;
+    font-weight: bold;
+    color: #3B3B3B;
+    font-weight: 400;
+} */
+.updateNoteMain input{
+    height: 4rem;
+    font-size: 2rem;
+    padding: .5rem;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    color: black;
+    font-weight: 400;
+}
+.updateNoteMain textarea{
+    height: 15rem;
+    font-size: 1.4rem;
+    padding: .5rem;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    color: black;
+    font-weight: 400;
 }
