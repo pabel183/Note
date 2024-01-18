@@ -117,10 +117,8 @@ const Card = (props) => {
                 {props.title.length===0?"Undefined":props.title}
             </h3>
             <h5>{props.date}</h5>
-            <h4>{props.description}</h4>
-            {/* <h4>{props.description.length>150?props.description.slice(0,150):props.description}</h4> */}
-            
-
+            {/* <p>{props.description}</p> */}
+            <p>{props.description.length>150?props.description.slice(0,150):props.description}</p>
         </div>
     );
 }
