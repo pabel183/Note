@@ -36,25 +36,8 @@
     gap: 2rem;
     padding: 0 1rem;
 }
-/* .updateNoteMain input{
-    height: 4rem;
-    font-size: 2rem;
-    padding: .5rem;
-    background-color: transparent;
-    font-weight: bold;
-    color: #3B3B3B;
-    font-weight: 400;
-}
-.updateNoteMain textarea{
-    height: 15rem;
-    font-size: 1.4rem;
-    padding: .5rem;
-    background-color: transparent;
-    font-weight: bold;
-    color: #3B3B3B;
-    font-weight: 400;
-} */
-.updateNoteMain input{
+
+.updateNoteMain input:focus{
     height: 4rem;
     font-size: 2rem;
     padding: .5rem;
@@ -64,7 +47,7 @@
     color: black;
     font-weight: 400;
 }
-.updateNoteMain textarea{
+.updateNoteMain textarea:focus{
     height: 15rem;
     font-size: 1.4rem;
     padding: .5rem;
