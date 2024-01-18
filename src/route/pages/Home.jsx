@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import Notes from "./Notes";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import notepadImage from "../images/Layer 0.png";
+import bakcgrondImage from "../images/homeLogoBackground.png";
 import googleImage from "../images/google.png";
 import "./Home.css";
 
@@ -16,10 +16,10 @@ const Home = (props) => {
                 :
                 <>
                     <div className="homeLogo">
-                        {/* <img src={notepadImage} alt="notepadImage" /> */}
+                        <img src={bakcgrondImage} alt="notepadImage" />
                     </div>
                     <div className="homeLogin">
-                        <h1>Sign In With</h1>
+                        <h1>Sign in with</h1>
                         {/* <form action="http://localhost:4000/auth/google" method="Get"> */}
                         <form action="https://kitten-teddy.cyclic.app/auth/google" method="Get">
                             {/* : <form action="https://kitten-teddy.cyclic.app/auth/google" method="Get"> */}
@@ -29,7 +29,7 @@ const Home = (props) => {
                             </button> */}
                             <button className="formDiv">
                                 <img src={googleImage} alt="googleIcon" />
-                                <h1>google</h1>
+                                <h1>Google</h1>
                             </button>
                         </form>
 
